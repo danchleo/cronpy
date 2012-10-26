@@ -147,7 +147,7 @@ class Task(threading.Thread):
                     return False
 
         print 'start: %s at %s' % (self.cmd, current_date.strftime('%Y-%m-%d %H:%M:%S'))
-        p = subprocess.Popen(self.cmd, stdout=subprocess.PIPE)
+        p = subprocess.Popen(self.cmd, stdout=subprocess.PIPE, shell=True)
         output, outerror = p.communicate()
         p.wait()
         self.last_run = datetime.datetime.now()
